@@ -10,7 +10,7 @@ function Rectangulo ()
 	let largo;
 	let ancho;
 	let vueltasDeAlambre;
-	let calcularVueltas;
+	let alambreTotal;
 
 	largo = document.getElementById("txtIdLargo").value;
 	ancho = document.getElementById("txtIdAncho").value;
@@ -20,9 +20,9 @@ function Rectangulo ()
 
 	vueltasDeAlambre = 3;
 
-	calcularVueltas = (largo + ancho) * vueltasDeAlambre;
+	alambreTotal = (largo + ancho) * vueltasDeAlambre;
 
-	alert(calcularVueltas);
+	alert(alambreTotal);
 
 
 }

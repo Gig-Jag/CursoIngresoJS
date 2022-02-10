@@ -20,8 +20,6 @@ function CalcularPrecio ()
     let precioLamparas;
     let precio;
     let descuento;
-    let precioConDescuento;
-    let porcentajeIibb;
     let mensaje;
     let iibb;
 
@@ -35,81 +33,79 @@ function CalcularPrecio ()
     
     iibb = 0.1;
 
-    if(cantidadDeLamparas >= 6)
+    descuento = 1;
+
+    if(cantidadDeLamparas > -1)
     {
+        if(cantidadDeLamparas > 5)
+        {
         descuento = 0.5;
-        precioConDescuento = precio * descuento;
-        document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-    }
-    else
-    {
-        if(cantidadDeLamparas == 5)
-        {
-            if(marca == "ArgentinaLuz")
-            {
-            descuento = 0.6;
-            precioConDescuento = precio * descuento;
-            document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-            }
-            else
-            {
-            descuento = 0.7;
-            precioConDescuento = precio * descuento;
-            document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-            }
         }
-        if(cantidadDeLamparas == 4)
+        else
         {
-            if (marca == "ArgentinaLuz" || marca == "FelipeLamparas")
-            {   
-            descuento = 0.75;
-            precioConDescuento = precio * descuento;
-            document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-            }
-            else
+            if(cantidadDeLamparas == 5)
             {
-                descuento = 0.80;
-                precioConDescuento = precio * descuento;
-                document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-            }
-        
-        }
-        
-        if(cantidadDeLamparas == 3) 
-        {   
-            if(marca == "ArgentinaLuz")
-            {
-            descuento = 0.85;
-            precioConDescuento = precio * descuento;
-            document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-            }
-            else
-            {
-                if(marca == "FelipeLamparas")
+                if(marca == "ArgentinaLuz")
                 {
-                descuento = 0.90;
-                precioConDescuento = precio * descuento;
-                document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
+                descuento = 0.6;
                 }
                 else
                 {
-                descuento = 0.95;
-                precioConDescuento = precio * descuento;
-                document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
+                descuento = 0.7;
+                }
+            }
+            else
+            {
+                if(cantidadDeLamparas == 4)
+                {
+                    if (marca == "ArgentinaLuz" || marca == "FelipeLamparas")
+                    {   
+                    descuento = 0.75;
+                    }
+                    else
+                    {
+                    descuento = 0.80;
+                    }
+                }
+                else
+                {
+                    if(cantidadDeLamparas == 3) 
+                    {   
+                        if(marca == "ArgentinaLuz")
+                        {
+                        descuento = 0.85;
+                        }
+                        else
+                        {
+                            if(marca == "FelipeLamparas")
+                            {
+                            descuento = 0.90;
+                            }
+                            else
+                            {
+                            descuento = 0.95;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+    else
+    {
+        alert("Numero Invalido");
+    }
 
-    if(precioConDescuento > 120){
-        
+    precio = precio * descuento;
+    iibb = precio * iibb;
 
-        porcentajeIibb = precioConDescuento * iibb;
-        mensaje = "IIBB Usted pago " + porcentajeIibb;
+    if(precio > 120)
+    {
+        mensaje = "IIBB Usted pago " + iibb;
+        precio = precio + iibb;
 
-        precioConDescuento = precioConDescuento + (precioConDescuento * iibb);
-        document.getElementById("txtIdprecioDescuento").value = precioConDescuento;
-        
         alert(mensaje);
     }
+
+    document.getElementById("txtIdprecioDescuento").value = precio;
 }

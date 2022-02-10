@@ -56,9 +56,7 @@ function PrecioFinal ()
 	let precioDos;
 	let precioTres;
 	let precioTotal;
-	let calcularIva;
 	let iva;
-	let resultado;
 
 	precioUno = document.getElementById("txtIdPrecioUno").value;
 	precioDos = document.getElementById("txtIdPrecioDos").value;
@@ -68,13 +66,11 @@ function PrecioFinal ()
 	precioDos = parseFloat(precioDos);
 	precioTres = parseFloat(precioTres);
 
-	iva = 21;
+	iva = 1.21;
 
 	precioTotal = precioUno + precioDos + precioTres;
 
-	calcularIva = (precioTotal * iva) / 100;
-
-	resultado = precioTotal + calcularIva;
+	precioTotal = precioTotal * iva;
 	
-	alert(resultado);
+	alert(precioTotal);
 }
